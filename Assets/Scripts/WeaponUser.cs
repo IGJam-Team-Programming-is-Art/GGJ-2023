@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class WeaponUser : MonoBehaviour
@@ -36,8 +37,12 @@ public class WeaponUser : MonoBehaviour
         }
         CooldownEndTimeStamp = Time.time + CurrentWeapon.Cooldown;
 
-        //Wait Preswing Duration, then do actual Shot
-        Helper.WaitDelay(CurrentWeapon.Preswing, () => Shoot(targetPoint));
+        //Wait Pressing Duration, then do actual Shot
+        UniTask.Void(async target =>
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(CurrentWeapon.Preswing));
+            Shoot(target);
+        }, targetPoint);
     }
 
     private void Shoot(Vector3 targetPoint)
