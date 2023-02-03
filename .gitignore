@@ -22,8 +22,6 @@
 # Visual Studio cache directory
 .vs/
 .idea/
-
-# Visual Studio cache directory
 .vscode/
 
 # Gradle cache directory
@@ -64,3 +62,4 @@ crashlytics-build.properties
 
 
 
+packages-lock.json

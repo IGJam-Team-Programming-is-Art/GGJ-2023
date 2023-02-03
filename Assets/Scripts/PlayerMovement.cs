@@ -25,8 +25,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isMoving is false)
+        {
+            _rb.velocity = Vector3.zero;
             return;
-        
+        }
+
         var velocity = new Vector3(_currentDirection.x, 0f, _currentDirection.y) * Speed;
         _rb.velocity = velocity;
     }
