@@ -22,7 +22,10 @@ public class HitpointUi : MonoBehaviour
         Slider.minValue = 0;
         Slider.maxValue = HitPointsReference.Max;
         Slider.value = HitPointsReference.Current;
-        HitPointText.text = GetHitpointText();
+        if (HitPointText)
+        {
+            HitPointText.text = GetHitpointText();
+        }
 
         HitPointsReference.OnModify += OnModify;
         HitPointsReference.OnDeath += OnDeath;
@@ -31,12 +34,18 @@ public class HitpointUi : MonoBehaviour
     private void OnModify(int amount)
     {
         Slider.value = HitPointsReference.Current;
-        HitPointText.text = GetHitpointText();
+        if (HitPointText)
+        {
+            HitPointText.text = GetHitpointText();
+        }
     }
 
     private void OnDeath()
     {
-        HitPointText.text = "Dead";
+        if (HitPointText)
+        {
+            HitPointText.text = "Dead";
+        }
     }
 
     private string GetHitpointText() => $"{HitPointsReference.Current} /  {HitPointsReference.Max}";
