@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1607839771491591096}
   - component: {fileID: 828206500416837675}
   - component: {fileID: 656182487738516613}
+  - component: {fileID: 2082107864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -284,6 +285,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0d69b53a-f54f-4e94-9806-056c6d6ba537
     m_ActionName: Player/LookMouse[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2082107864}
+        m_TargetAssemblyTypeName: PlayerPlaceBuilding, Assembly-CSharp
+        m_MethodName: OnBuildTargeted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0d53d50c-692f-43de-b514-773971ac73ac
+    m_ActionName: Player/BuildMouse[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -344,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fede262c135374ba307dd86c3c7440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
+  CurrentWeapon: {fileID: 11400000, guid: f8508e4d4f63d9642876c88e3c6b99c2, type: 2}
 --- !u!114 &828206500416837675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +390,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2558729dfc620a74f930ad910a5aeb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2082107864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919368962219704047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58146b4708071374e8fcd286caed1078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildingPrefab: {fileID: 6487472668912730964, guid: 85f26605ff8101e4381e6132261f4e3b,
+    type: 3}
+  Cooldown: 1
 --- !u!1 &5598202974139586217
 GameObject:
   m_ObjectHideFlags: 0

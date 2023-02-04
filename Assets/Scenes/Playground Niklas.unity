@@ -130,12 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845220649}
     m_Modifications:
-    - target: {fileID: 1607839771491591096, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: CurrentWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: f8508e4d4f63d9642876c88e3c6b99c2,
-        type: 2}
     - target: {fileID: 2307857539384707971, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
       propertyPath: m_RootOrder
@@ -196,56 +190,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
-      value: 0d53d50c-692f-43de-b514-773971ac73ac
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
-      value: Player/BuildMouse[/Mouse/rightButton]
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2082107864}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnBuildTargeted
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerPlaceBuilding, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967112497095280904, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dbba943ecd034b49b930cf3a9ee9671, type: 3}
 --- !u!114 &52269819 stripped
@@ -254,7 +198,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 52269818}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082107857}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5422c4aea3ecd5640bfaa9903048a2b8, type: 3}
@@ -2158,24 +2102,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &2082107857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3919368962219704047, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-    type: 3}
-  m_PrefabInstance: {fileID: 52269818}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2082107864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082107857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58146b4708071374e8fcd286caed1078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BuildingPrefab: {fileID: 6487472668912730964, guid: 85f26605ff8101e4381e6132261f4e3b,
-    type: 3}
-  Cooldown: 1
