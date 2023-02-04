@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(ResourceHandler))]
 public class Well : MonoBehaviour
 {
     private UniTask _replenishTask;
@@ -70,4 +71,21 @@ public class Well : MonoBehaviour
         
         return (true, takenAmount);
     }
+}
+
+/// <summary>
+/// Represents a certain amount of a resource, can be negative
+/// </summary>
+[Serializable]
+public struct ResourceStack
+{
+    public Resource Type;
+    public int Amount;
+}
+
+[Serializable]
+public enum Resource
+{
+    None,
+    Water
 }
