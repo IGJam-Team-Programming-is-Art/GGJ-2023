@@ -4,23 +4,24 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+
+
 public class WeaponUser : MonoBehaviour
 {
+    const string ProjectileSpawnPointTag = "ProjectileSpawn";
     public Weapon CurrentWeapon;
-
-    //Connection to Input System
-    private Vector2 CurrentTargetPoint;
-    private bool ShootButtonPressed;
+    public event Action OnPreswing;
 
     //Gameplay Variables
-    private float CooldownEndTimeStamp;
+    private float _cooldownEndTimeStamp;
+    private GameObject _projectileSpawnPoint;
+    private Ownership _ownership;
 
-    private void FixedUpdate()
+    private void Awake()
     {
-        if (ShootButtonPressed)
-        {
-            UseWeapon(CurrentTargetPoint);
-        }
+        _projectileSpawnPoint = transform.FindRecursiveByTag(ProjectileSpawnPointTag)?.gameObject;
+        _ownership = GetComponent<Ownership>();
+        Debug.Log($"Projectile Spawn: {_projectileSpawnPoint}");
     }
 
     public void UseWeapon(Vector3 targetPoint)
@@ -30,12 +31,12 @@ public class WeaponUser : MonoBehaviour
             Debug.LogError("Shot without weapon!");
             return;
         }
-        if (CooldownEndTimeStamp > Time.time)
+        if (_cooldownEndTimeStamp > Time.time)
         {
             Debug.Log("Wanted to shoot, but cooldown was still running");
             return;
         }
-        CooldownEndTimeStamp = Time.time + CurrentWeapon.Cooldown;
+        _cooldownEndTimeStamp = Time.time + CurrentWeapon.Cooldown;
 
         //Wait Pressing Duration, then do actual Shot
         UniTask.Void(async target =>
@@ -49,11 +50,26 @@ public class WeaponUser : MonoBehaviour
     {
         if (CurrentWeapon.Type == WeaponType.Projectile)
         {
-            //TODO: 
             // Spawn Projectile (as setup in Weapon)
-            Instantiate(CurrentWeapon.Projectile, targetPoint, Quaternion.identity);
-            // Set Speed and Damage (from CurrentWeapon Values)
+            Vector3 spawnPoint = GetProjectileSpawnPoint();
+            targetPoint.y = spawnPoint.y;
+            var projectileObject = Instantiate(CurrentWeapon.Projectile, spawnPoint, Quaternion.identity);
+            var projectile = projectileObject.GetComponent<Projectile>();
+            if (projectile == null)
+            {
+                Debug.LogWarning("No Projectile found");
+                return;
+            }
+
+            // Set Speed and Damage (from CurrentWeapon Values)7
+            projectile.Speed = CurrentWeapon.Speed;
+            projectile.Damage = CurrentWeapon.Damage;
+            projectile.TargetedRelationships = CurrentWeapon.ValidTargets;
+            projectile.LifeTime = CurrentWeapon.LifeTime;
+            projectile.Source = gameObject;
+
             // Turn Projectile such that forward vector points at targetPoint
+            projectile.transform.LookAt(targetPoint, Vector3.up);
         }
         else if (CurrentWeapon.Type == WeaponType.InstantArc)
         {
@@ -69,6 +85,11 @@ public class WeaponUser : MonoBehaviour
         }
     }
 
+    private Vector3 GetProjectileSpawnPoint()
+    {
+        return _projectileSpawnPoint != null ? _projectileSpawnPoint.transform.position : transform.position;
+    }
+
     public void SetWeapon(Weapon weapon)
     {
         // if (weapon == CurrentWeapon)
@@ -76,6 +97,6 @@ public class WeaponUser : MonoBehaviour
         //     return;
         // }
         CurrentWeapon = weapon;
-        CooldownEndTimeStamp = 0f;
+        _cooldownEndTimeStamp = 0f;
     }
 }

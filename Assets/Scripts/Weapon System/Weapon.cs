@@ -13,14 +13,16 @@ public enum WeaponType
 [CreateAssetMenu(menuName = "GameData/Weapon")]
 public class Weapon : ScriptableObject
 {
-    public float Cooldown;
-    public float Preswing;  //Wait time between using the Weapon and actually shooting
-    public float Damage;
-    public WeaponType Type;
+    public float Cooldown = 0.5f;
+    public float Preswing = 0.1f;  //Wait time between using the Weapon and actually shooting
+    public int Damage = 5;
+    public WeaponType Type = WeaponType.Projectile;
+    public List<Relationship> ValidTargets = new();
 
     //Projectile / Range Weapons
     public GameObject Projectile;
-    public float Speed;
+    public float Speed = 10f;
+    public float LifeTime = 4f;
 
     //Instant / Melee Weapons
     public float Width; //InstantRect

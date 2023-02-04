@@ -18,13 +18,13 @@ public class PlayerShooting : MonoBehaviour
     {
         var screenPos = Mouse.current.position.ReadValue();
         var target = Extensions.GetGroundPoint(screenPos);
-        target.y = 1;
         _weaponUser.UseWeapon(target);
     }
 
     public void OnShootDirectional(InputAction.CallbackContext context)
     {
-        //TODO
-        var angle = transform.rotation.eulerAngles.y;
+        var forward = transform.forward;
+        var target = transform.position + forward;
+        _weaponUser.UseWeapon(target);
     }
 }
