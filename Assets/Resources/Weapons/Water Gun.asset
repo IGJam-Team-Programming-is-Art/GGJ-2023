@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Water Gun
   m_EditorClassIdentifier: 
   Cooldown: 0.5
-  Preswing: 0
+  InitialDelay: 0
   Damage: 5
   Type: 0
   ValidTargets: 030000000100000002000000
   Projectile: {fileID: 823074201208157880, guid: 03e6e8d99ba62a241ab90f568ed4f777,
     type: 3}
   Speed: 8
+  LifeTime: 4
   Width: 0
   Radius_Length: 0
   Arc: 0

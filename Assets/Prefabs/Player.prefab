@@ -109,8 +109,9 @@ GameObject:
   - component: {fileID: 2307857539384707971}
   - component: {fileID: 8967112497095280904}
   - component: {fileID: 406453590237150811}
-  - component: {fileID: 828206500416837675}
+  - component: {fileID: 4984481549134076780}
   - component: {fileID: 1607839771491591096}
+  - component: {fileID: 828206500416837675}
   - component: {fileID: 656182487738516613}
   m_Layer: 0
   m_Name: Player
@@ -303,7 +304,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &828206500416837675
+--- !u!114 &4984481549134076780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,12 +313,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3919368962219704047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4763313b654e40b5a9f25133cdf4d0f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5422c4aea3ecd5640bfaa9903048a2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMoving: 0
-  _currentDirection: {x: 0, y: 0}
-  Speed: 5
+  <Current>k__BackingField: 100
+  <Max>k__BackingField: 100
 --- !u!114 &1607839771491591096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +331,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
+--- !u!114 &828206500416837675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919368962219704047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4763313b654e40b5a9f25133cdf4d0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isMoving: 0
+  _currentMoveDirection: {x: 0, y: 0}
+  _currentViewDirection: {x: 0, y: 0}
+  Speed: 5
 --- !u!114 &656182487738516613
 MonoBehaviour:
   m_ObjectHideFlags: 0

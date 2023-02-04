@@ -14,7 +14,7 @@ public enum WeaponType
 public class Weapon : ScriptableObject
 {
     public float Cooldown = 0.5f;
-    public float Preswing = 0.1f;  //Wait time between using the Weapon and actually shooting
+    public float InitialDelay = 0.1f;  //Wait time between using the Weapon and actually shooting
     public int Damage = 5;
     public WeaponType Type = WeaponType.Projectile;
     public List<Relationship> ValidTargets = new();

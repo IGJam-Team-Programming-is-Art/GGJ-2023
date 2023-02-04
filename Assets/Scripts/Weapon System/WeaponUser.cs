@@ -41,7 +41,7 @@ public class WeaponUser : MonoBehaviour
         //Wait Pressing Duration, then do actual Shot
         UniTask.Void(async target =>
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(CurrentWeapon.Preswing));
+            await UniTask.Delay(TimeSpan.FromSeconds(CurrentWeapon.InitialDelay));
             Shoot(target);
         }, targetPoint);
     }
