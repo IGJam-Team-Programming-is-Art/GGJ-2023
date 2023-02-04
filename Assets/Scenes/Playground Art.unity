@@ -1330,6 +1330,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 241502883453746648, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_Name
+      value: HP UI Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 241502883453746649, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: m_SizeDelta.x
