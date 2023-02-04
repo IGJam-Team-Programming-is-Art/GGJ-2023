@@ -51,6 +51,7 @@ public class WeaponUser : MonoBehaviour
         {
             //TODO: 
             // Spawn Projectile (as setup in Weapon)
+            Instantiate(CurrentWeapon.Projectile, targetPoint, Quaternion.identity);
             // Set Speed and Damage (from CurrentWeapon Values)
             // Turn Projectile such that forward vector points at targetPoint
         }

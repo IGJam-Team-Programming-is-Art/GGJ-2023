@@ -7,19 +7,24 @@ using UnityEngine.InputSystem.Users;
 public class PlayerShooting : MonoBehaviour
 {
     private Rigidbody _rb;
-
+    private WeaponUser _weaponUser;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _weaponUser = GetComponent<WeaponUser>();
     }
 
     public void OnShootTargeted(InputAction.CallbackContext context)
     {
-        var screenPos = context.ReadValue<Vector2>();
+        var screenPos = Mouse.current.position.ReadValue();
+        var target = Extensions.GetGroundPoint(screenPos);
+        target.y = 1;
+        _weaponUser.UseWeapon(target);
     }
 
     public void OnShootDirectional(InputAction.CallbackContext context)
     {
-        var dir = context.ReadValue<Vector2>();
+        //TODO
+        var angle = transform.rotation.eulerAngles.y;
     }
 }
