@@ -36,6 +36,5 @@ public class Hitpoints : MonoBehaviour
 
         Debug.LogWarning("Destroying entity");
         OnDeath?.Invoke();
-        Destroy(gameObject);
     }
 }

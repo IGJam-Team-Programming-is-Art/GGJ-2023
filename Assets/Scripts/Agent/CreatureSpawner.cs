@@ -48,7 +48,7 @@ public class CreatureSpawner : MonoBehaviour
     private async UniTaskVoid SpawnUpdate(CancellationToken ct)
     {
         var stopSpawning = false;
-        while (_cts.IsCancellationRequested is false || stopSpawning)
+        while (_cts.IsCancellationRequested is false && stopSpawning is false)
         {
             var randomVariation = Random.Range(-1 * SpawnPulseIntervalVariation, SpawnPulseIntervalVariation);
 

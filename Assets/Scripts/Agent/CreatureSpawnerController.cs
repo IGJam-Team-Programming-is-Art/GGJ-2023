@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using VContainer;
@@ -25,7 +26,7 @@ public class CreatureSpawnerController : MonoBehaviour
                 spawner.OnDisableEvent += OnSpawnerDisabled;
                 return spawner;
             },
-            actionOnRelease: spawner => spawner.enabled = false);
+            actionOnRelease: spawner => spawner.gameObject.SetActive(false));
 
         //Generate pool for each creature type
         foreach (var creatureData in _createDataCollection.Creatures)
@@ -34,6 +35,8 @@ public class CreatureSpawnerController : MonoBehaviour
             {
                 var creature = Instantiate(creatureData.Prefab).GetComponent<CreatureBehaviour>();
                 creature.gameObject.SetActive(false);
+
+                creature.DeathEvent += OnCreatureDeath;
                 creature.TargetAssignmentController = _targetAssignmentController;
 
                 return creature;
@@ -45,6 +48,11 @@ public class CreatureSpawnerController : MonoBehaviour
             Debug.LogError($"Creature of type {creatureData.Type} already has pool!");
             pool.Dispose();
         }
+    }
+
+    private void Start()
+    {
+        CreateSpawner();
     }
 
     /// <summary>
@@ -72,11 +80,18 @@ public class CreatureSpawnerController : MonoBehaviour
 
     private void OnSpawnerDisabled(CreatureSpawner spawner)
     {
-        Debug.Log("TEST_SpawnerPrefab released!");
+        Debug.Log($"{spawner.gameObject} released!");
         _spawnerPools.Release(spawner);
+    }
+
+    private void OnCreatureDeath(CreatureBehaviour creature)
+    {
+        Debug.Log($"{creature.gameObject} released!");
+        _creaturePools[creature.CreatureType].Release(creature);
     }
 }
 
+[Serializable]
 public enum Creature
 {
     None,

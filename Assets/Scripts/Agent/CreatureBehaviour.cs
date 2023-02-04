@@ -1,8 +1,13 @@
-﻿using UnityEngine;
-using VContainer;
+﻿using System;
+using UnityEngine;
 
+[RequireComponent(typeof(Hitpoints))]
 public class CreatureBehaviour : MonoBehaviour
 {
+    [field: SerializeField] public Creature CreatureType { get; private set; }
+
+    private Hitpoints _hitpoints;
+    private AgentMovement _agentMovement;
     private TargetAssignmentController _targetAssignmentController;
 
     public TargetAssignmentController TargetAssignmentController
@@ -10,12 +15,15 @@ public class CreatureBehaviour : MonoBehaviour
         set => _targetAssignmentController = value;
     }
 
-    private AgentMovement _agentMovement;
+    public event Action<CreatureBehaviour> DeathEvent;
 
     private void Awake()
     {
         enabled = false;
         _agentMovement = GetComponent<AgentMovement>();
+
+        _hitpoints = GetComponent<Hitpoints>();
+        _hitpoints.OnDeath += OnDeath;
     }
 
     private void OnEnable()
@@ -28,6 +36,12 @@ public class CreatureBehaviour : MonoBehaviour
     /// </summary>
     private void SelectTarget()
     {
-        _agentMovement.SetTarget(_targetAssignmentController.GetTarget());
+        _agentMovement.SetTarget(_targetAssignmentController.GetTarget(), true);
+    }
+
+    private void OnDeath()
+    {
+        enabled = false;
+        DeathEvent?.Invoke(this);
     }
 }

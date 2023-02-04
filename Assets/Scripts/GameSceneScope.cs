@@ -4,17 +4,21 @@ using VContainer.Unity;
 
 public class GameSceneScope : LifetimeScope
 {
+    [SerializeField] private GameObject _player;
+
     [SerializeField] private CreatureDataCollection _creatureDataCollection;
     [SerializeField] private CreatureSpawnerCollection _creatureSpawnerCollection;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        var player = GameObject.FindWithTag("Player");
+        //TODO: Replace with reference in final scene
+        if (_player == null)
+            _player = GameObject.FindWithTag("Player");
 
         builder.RegisterInstance<PlayerReferences>(new()
         {
-            GameObject = player,
-            Hitpoints = player.GetComponent<Hitpoints>()
+            GameObject = _player,
+            Hitpoints = _player.GetComponent<Hitpoints>()
         });
 
         builder.RegisterInstance(_creatureDataCollection);
@@ -26,6 +30,7 @@ public class GameSceneScope : LifetimeScope
     private void RegisterController(IContainerBuilder builder)
     {
         builder.Register<TargetAssignmentController>(Lifetime.Scoped);
+        builder.Register<WaveController>(Lifetime.Scoped);
     }
 }
 

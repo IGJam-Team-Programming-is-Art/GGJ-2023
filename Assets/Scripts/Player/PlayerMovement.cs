@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float Speed = 1f;
     private Ray cameraRay;
-    Plane plane = new Plane(Vector3.up, 0);
+    private Plane plane = new(Vector3.up, 0);
 
     private void Awake()
     {
@@ -33,10 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_currentViewDirection.sqrMagnitude < 0.01f)
-        {
-            return;
-        }
+        if (_currentViewDirection.sqrMagnitude < 0.01f) return;
         var target = transform.position + _currentViewDirection.to3D();
         transform.LookAt(target, Vector3.up);
     }
