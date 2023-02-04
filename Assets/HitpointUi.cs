@@ -9,23 +9,28 @@ public class HitpointUi : MonoBehaviour
 {
     [SerializeField] Slider Slider;
     [SerializeField] TMP_Text HitPointText;
+    [SerializeField] Hitpoints HitPointsReference;
 
     [Inject] PlayerReferences _playerReferences;
 
     private void Start()
     {
+        if (HitPointsReference == null)
+        {
+            HitPointsReference = _playerReferences.Hitpoints;
+        }
         Slider.minValue = 0;
-        Slider.maxValue = _playerReferences.Hitpoints.Max;
-        Slider.value = _playerReferences.Hitpoints.Current;
+        Slider.maxValue = HitPointsReference.Max;
+        Slider.value = HitPointsReference.Current;
         HitPointText.text = GetHitpointText();
 
-        _playerReferences.Hitpoints.OnModify += OnModify;
-        _playerReferences.Hitpoints.OnDeath += OnDeath;
+        HitPointsReference.OnModify += OnModify;
+        HitPointsReference.OnDeath += OnDeath;
     }
 
     private void OnModify(int amount)
     {
-        Slider.value = _playerReferences.Hitpoints.Current;
+        Slider.value = HitPointsReference.Current;
         HitPointText.text = GetHitpointText();
     }
 
@@ -34,6 +39,6 @@ public class HitpointUi : MonoBehaviour
         HitPointText.text = "Dead";
     }
 
-    private string GetHitpointText() => $"{_playerReferences.Hitpoints.Current} /  {_playerReferences.Hitpoints.Max}";
+    private string GetHitpointText() => $"{HitPointsReference.Current} /  {HitPointsReference.Max}";
 
 }

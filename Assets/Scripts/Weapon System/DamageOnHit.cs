@@ -13,6 +13,6 @@ public class DamageOnHit : MonoBehaviour
 
     private void OnHit(GameObject target)
     {
-        target.GetComponent<Hitpoints>()?.Modify(-_projectile.Damage);
+        target.GetComponentInParent<Hitpoints>()?.Modify(-_projectile.Damage);
     }
 }
