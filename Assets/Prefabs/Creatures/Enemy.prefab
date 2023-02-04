@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 3544854584000306640}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9153b1578f42569c22314da91ca419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CreatureType>k__BackingField: 0
 --- !u!114 &8831109927747428879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dee614b69b44714a4615be873e0e619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TargetObject>k__BackingField: {fileID: 0}
+  _normalSpeed: 0
+  _isMoving: 0
+  <Target>k__BackingField: {fileID: 0}
   <TargetPosition>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!195 &3544854584000306640
 NavMeshAgent:

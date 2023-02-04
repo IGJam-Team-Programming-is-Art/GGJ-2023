@@ -52,7 +52,6 @@ public class WeaponUser : MonoBehaviour
         {
             // Spawn Projectile (as setup in Weapon)
             Vector3 spawnPoint = GetProjectileSpawnPoint();
-            targetPoint.y = spawnPoint.y;
             var projectileObject = Instantiate(CurrentWeapon.Projectile, spawnPoint, Quaternion.identity);
             var projectile = projectileObject.GetComponent<Projectile>();
             if (projectile == null)
@@ -62,6 +61,7 @@ public class WeaponUser : MonoBehaviour
             }
 
             // Set Speed and Damage (from CurrentWeapon Values)7
+            targetPoint.y = CurrentWeapon.TargetGround ? 0 : spawnPoint.y;
             projectile.Speed = CurrentWeapon.Speed;
             projectile.Damage = CurrentWeapon.Damage;
             projectile.TargetedRelationships = CurrentWeapon.ValidTargets;

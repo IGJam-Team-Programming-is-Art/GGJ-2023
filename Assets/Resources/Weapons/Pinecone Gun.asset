@@ -16,10 +16,11 @@ MonoBehaviour:
   InitialDelay: 0
   Damage: 5
   Type: 0
-  ValidTargets: 030000000100000002000000
+  ValidTargets: 03000000
   Projectile: {fileID: 823074201208157880, guid: 9a374cc64c671864a909202b5222ae24,
     type: 3}
-  Speed: 20
+  Speed: 6
+  TargetGround: 1
   LifeTime: 4
   Width: 0
   Radius_Length: 0

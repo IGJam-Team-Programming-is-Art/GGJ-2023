@@ -22,6 +22,7 @@ public class Weapon : ScriptableObject
     //Projectile / Range Weapons
     public GameObject Projectile;
     public float Speed = 10f;
+    public bool TargetGround = false;
     public float LifeTime = 4f;
 
     //Instant / Melee Weapons
