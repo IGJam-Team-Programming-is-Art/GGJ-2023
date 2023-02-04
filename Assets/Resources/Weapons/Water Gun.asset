@@ -16,6 +16,7 @@ MonoBehaviour:
   Preswing: 0
   Damage: 5
   Type: 0
+  ValidTargets: 030000000100000002000000
   Projectile: {fileID: 823074201208157880, guid: 03e6e8d99ba62a241ab90f568ed4f777,
     type: 3}
   Speed: 8

@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
 
     [SerializeField] private bool _isMoving = false;
-    [SerializeField] private Vector2 _currentDirection;
+    [SerializeField] private Vector2 _currentMoveDirection;
+    [SerializeField] private Vector2 _currentViewDirection;
 
     public float Speed = 1f;
     private Ray cameraRay;
@@ -26,27 +27,36 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        var velocity = new Vector3(_currentDirection.x, 0f, _currentDirection.y) * Speed;
+        var velocity = new Vector3(_currentMoveDirection.x, 0f, _currentMoveDirection.y) * Speed;
         _rb.velocity = velocity;
+    }
+
+    private void Update()
+    {
+        if (_currentViewDirection.sqrMagnitude < 0.01f)
+        {
+            return;
+        }
+        var target = transform.position + _currentViewDirection.to3D();
+        transform.LookAt(target, Vector3.up);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         _isMoving = !context.canceled;
-        _currentDirection = context.ReadValue<Vector2>().normalized;
+        _currentMoveDirection = context.ReadValue<Vector2>().normalized;
     }
 
     public void OnLookTargeted(InputAction.CallbackContext context)
     {
         var mousepos = context.ReadValue<Vector2>();
-        var target = Extensions.GetGroundPoint(mousepos);
-        transform.LookAt(target, Vector3.up);
+        var target = Extensions.GetGroundPoint(mousepos).to2D();
+        var source = transform.position.to2D();
+        _currentViewDirection = (target - source).normalized;
     }
 
     public void OnLookDirectional(InputAction.CallbackContext context)
     {
-        var dir = context.ReadValue<Vector2>();
-        var target = transform.position + dir.to3D();
-        transform.LookAt(target, Vector3.up);
+        _currentViewDirection = context.ReadValue<Vector2>();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class Extensions
@@ -26,5 +27,57 @@ public static class Extensions
         }
         Debug.LogError("GroundPoint Raycast didnt hit ground plane, error.");
         return Vector3.zero;
+    }
+
+    public static Transform FindRecursiveByName(this Transform self, string exactName) => self.FindRecursive(child => child.name == exactName);
+    public static Transform FindRecursiveByTag(this Transform self, string tag) => self.FindRecursive(child => child.tag == tag);
+
+    public static Transform FindRecursive(this Transform self, Func<Transform, bool> selector)
+    {
+        // if (selector(self))
+        // {
+        //     return self;
+        // }
+
+        foreach (Transform child in self)
+        {
+            if (selector(child))
+            {
+                return child;
+            }
+
+            var finding = child.FindRecursive(selector);
+
+            if (finding != null)
+            {
+                return finding;
+            }
+        }
+
+        return null;
+    }
+
+    public static Transform GetRootParent(this Transform self)
+    {
+        if (self.parent == null)
+        {
+            return self;
+        }
+
+        return GetRootParent(self.parent);
+    }
+
+    public static bool IsSameOrChildOf(this Transform self, Transform parent)
+    {
+        if (parent == self)
+        {
+            return true;
+        }
+        if (self.parent == null)
+        {
+            return false;
+        }
+
+        return IsSameOrChildOf(self.parent, parent);
     }
 }
