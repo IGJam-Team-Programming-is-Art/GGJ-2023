@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(ResourceHandler))]
 public class Well : MonoBehaviour
 {
     private UniTask _replenishTask;
@@ -28,13 +29,20 @@ public class Well : MonoBehaviour
         _tokenSource.Cancel();
         _tokenSource.Dispose();
     }
-
+    
+    /// <summary>
+    /// Replenishes well every interval
+    /// </summary>
+    /// <param name="ct"></param>
     private async UniTask ReplenishUpdate(CancellationToken ct)
     {
-        while (true)
+        while (ct.IsCancellationRequested is false)
         {
             if (await UniTask.Delay(TimeSpan.FromSeconds(_replenishIntervalSeconds), DelayType.DeltaTime, cancellationToken: ct).SuppressCancellationThrow())
                 return;
+
+            if (WaterLevel == WaterLevelMax)
+                continue;
 
             var waterLevelOld = WaterLevel;
             WaterLevel = math.min(WaterLevelMax, WaterLevel + ReplenishAmount);
@@ -63,4 +71,21 @@ public class Well : MonoBehaviour
         
         return (true, takenAmount);
     }
+}
+
+/// <summary>
+/// Represents a certain amount of a resource, can be negative
+/// </summary>
+[Serializable]
+public struct ResourceStack
+{
+    public Resource Type;
+    public int Amount;
+}
+
+[Serializable]
+public enum Resource
+{
+    None,
+    Water
 }
