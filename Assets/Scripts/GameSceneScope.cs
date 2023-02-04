@@ -21,16 +21,28 @@ public class GameSceneScope : LifetimeScope
             Hitpoints = _player.GetComponent<Hitpoints>()
         });
 
+        RegisterScriptableObjects(builder);
+        RegisterModel(builder);
+        RegisterController(builder);
+    }
+
+    private void RegisterScriptableObjects(IContainerBuilder builder)
+    {
         builder.RegisterInstance(_creatureDataCollection);
         builder.RegisterInstance(_creatureSpawnerCollection);
+    }
 
-        RegisterController(builder);
+    private void RegisterModel(IContainerBuilder builder)
+    {
+        builder.Register<WaveStatus>(Lifetime.Scoped);
+        builder.Register<SpawnerStatus>(Lifetime.Scoped);
     }
 
     private void RegisterController(IContainerBuilder builder)
     {
         builder.Register<TargetAssignmentController>(Lifetime.Scoped);
-        builder.Register<WaveController>(Lifetime.Scoped);
+        builder.RegisterComponentInHierarchy<CreatureSpawnerController>();
+        builder.RegisterEntryPoint<WaveController>(Lifetime.Scoped).AsSelf();
     }
 }
 

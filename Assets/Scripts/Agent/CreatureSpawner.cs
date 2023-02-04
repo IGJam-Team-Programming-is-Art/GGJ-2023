@@ -22,6 +22,7 @@ public class CreatureSpawner : MonoBehaviour
     public Creature CreatureType;
     public ObjectPool<CreatureBehaviour> CreaturePool;
 
+    public event Action OnCreatureSpawnEvent;
     public event Action<CreatureSpawner> OnDisableEvent;
 
     private void OnEnable()
@@ -53,7 +54,10 @@ public class CreatureSpawner : MonoBehaviour
             var randomVariation = Random.Range(-1 * SpawnPulseIntervalVariation, SpawnPulseIntervalVariation);
 
             await UniTask.Delay(TimeSpan.FromSeconds(SpawnPulseInterval + randomVariation),
-                cancellationToken: ct);
+                cancellationToken: ct).SuppressCancellationThrow();
+
+            if (ct.IsCancellationRequested)
+                return;
 
             var amount = Random.Range(AmountPerPulse.Start.Value, AmountPerPulse.End.Value + 1);
             for (var i = 0; i < amount; i++)
@@ -65,6 +69,8 @@ public class CreatureSpawner : MonoBehaviour
                 creature.gameObject.SetActive(true);
 
                 CreatureSpawnedCount += 1;
+                OnCreatureSpawnEvent?.Invoke();
+
                 stopSpawning = CreatureSpawnedCount >= MaxCreatureSpawnAmount;
                 if (stopSpawning)
                     break;

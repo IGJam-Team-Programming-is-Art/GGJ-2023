@@ -37,4 +37,9 @@ public class Hitpoints : MonoBehaviour
         Debug.LogWarning("Destroying entity");
         OnDeath?.Invoke();
     }
+
+    public void ResetHitpoints()
+    {
+        Current = Max;
+    }
 }
