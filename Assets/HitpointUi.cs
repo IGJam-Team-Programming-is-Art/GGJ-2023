@@ -26,6 +26,7 @@ public class HitpointUi : MonoBehaviour
     private void OnModify(int amount)
     {
         Slider.value = _playerReferences.Hitpoints.Current;
+        HitPointText.text = GetHitpointText();
     }
 
     private void OnDeath()
