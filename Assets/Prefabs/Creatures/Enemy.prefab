@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 4950879507410629125}
   - component: {fileID: 4034385716813453191}
   - component: {fileID: 7242168771684806483}
-  - component: {fileID: 8920031753512405102}
   - component: {fileID: 796478707999001897}
   - component: {fileID: 8831109927747428879}
   - component: {fileID: 3544854584000306640}
@@ -294,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fede262c135374ba307dd86c3c7440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentWeapon: {fileID: 11400000, guid: d022562e202327840bc4359212477a9b, type: 2}
+  CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
 --- !u!114 &8920031753512405102
 MonoBehaviour:
   m_ObjectHideFlags: 0

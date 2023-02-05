@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private Vector2 _currentMoveDirection;
     [SerializeField] private Vector2 _currentViewDirection;
+    [SerializeField] private GameOverHandler _gameOverHandler;
+
+    private PlayerInput input;
 
     public float Speed = 1f;
     private Ray cameraRay;
@@ -16,7 +19,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        _gameOverHandler.OnGameOver += OnGameOver;
         _rb = GetComponent<Rigidbody>();
+        input = GetComponent<PlayerInput>();
+    }
+
+    private void OnGameOver()
+    {
+        input.enabled = false;
+        this.enabled = false;
     }
 
     private void FixedUpdate()
