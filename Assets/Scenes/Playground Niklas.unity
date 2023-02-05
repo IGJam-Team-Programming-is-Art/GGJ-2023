@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,17 +133,17 @@ PrefabInstance:
     - target: {fileID: 2082107864, guid: 9dbba943ecd034b49b930cf3a9ee9671, type: 3}
       propertyPath: _gameOverHandler
       value: 
-      objectReference: {fileID: 1882754021}
+      objectReference: {fileID: 0}
     - target: {fileID: 656182487738516613, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
       propertyPath: _gameOverHandler
       value: 
-      objectReference: {fileID: 1882754021}
+      objectReference: {fileID: 0}
     - target: {fileID: 828206500416837675, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
       propertyPath: _gameOverHandler
       value: 
-      objectReference: {fileID: 1882754021}
+      objectReference: {fileID: 0}
     - target: {fileID: 2307857539384707971, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
       propertyPath: m_RootOrder
@@ -2663,18 +2663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1882754021 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2000305848, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 452490526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b18636b2cbcff4e88eed251e21928b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1946343554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2851,6 @@ PrefabInstance:
         type: 3}
       propertyPath: GameOverHandler
       value: 
-      objectReference: {fileID: 1882754021}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42e36f95669aef4caf9acb0127b67c1, type: 3}
