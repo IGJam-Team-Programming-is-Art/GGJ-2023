@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class SoundHandler : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] AudioSource MusicSource;
     [SerializeField] GameOverHandler GameOverHandler;
 
+    [Inject] private WaveController _waveController;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,14 +23,18 @@ public class SoundHandler : MonoBehaviour
         AmbientSoundSource.Play();
         MusicSource.clip = NormalMusic;
         MusicSource.Play();
+
+        _waveController.StartingWaveEvent += PlayWaveMusic;
+        _waveController.EndWaveEvent += PlayNormalMusic;
     }
-    public void PlayWaveMusic()
+    
+    private void PlayWaveMusic()
     {
         MusicSource.clip = WaveMusic;
         MusicSource.Play();
     }
 
-    public void PlayNormalMusic()
+    private void PlayNormalMusic()
     {
         MusicSource.clip = NormalMusic;
         MusicSource.Play();
