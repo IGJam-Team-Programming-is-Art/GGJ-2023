@@ -10,17 +10,13 @@ public class CreatureSpawner : MonoBehaviour
 {
     private CancellationTokenSource _cts;
 
-    public float SpawnPulseInterval = 5f;
-    public float SpawnPulseIntervalVariation = 0.3f;
-    public Range AmountPerPulse = new(0, 2);
-
-    [FormerlySerializedAs("SpawnedCreatureCount")]
-    public int CreatureSpawnedCount;
-
-    public int MaxCreatureSpawnAmount = 1;
+    [SerializeField] private SpawnerSettings _spawnerSettings;
 
     public Creature CreatureType;
     public ObjectPool<CreatureBehaviour> CreaturePool;
+
+    [FormerlySerializedAs("SpawnedCreatureCount")]
+    public int CreatureSpawnedCount;
 
     public event Action OnCreatureSpawnEvent;
     public event Action<CreatureSpawner> OnDisableEvent;
@@ -51,15 +47,17 @@ public class CreatureSpawner : MonoBehaviour
         var stopSpawning = false;
         while (_cts.IsCancellationRequested is false && stopSpawning is false)
         {
-            var randomVariation = Random.Range(-1 * SpawnPulseIntervalVariation, SpawnPulseIntervalVariation);
+            var randomVariation = Random.Range(-1 * _spawnerSettings.SpawnPulseIntervalVariation,
+                _spawnerSettings.SpawnPulseIntervalVariation);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(SpawnPulseInterval + randomVariation),
+            await UniTask.Delay(TimeSpan.FromSeconds(_spawnerSettings.SpawnPulseInterval + randomVariation),
                 cancellationToken: ct).SuppressCancellationThrow();
 
             if (ct.IsCancellationRequested)
                 return;
 
-            var amount = Random.Range(AmountPerPulse.Start.Value, AmountPerPulse.End.Value + 1);
+            var amount = Random.Range(_spawnerSettings.AmountPerPulseRangeStart,
+                _spawnerSettings.AmountPerPulseRangeEnd + 1);
             for (var i = 0; i < amount; i++)
             {
                 var creature = CreaturePool.Get();
@@ -71,7 +69,7 @@ public class CreatureSpawner : MonoBehaviour
                 CreatureSpawnedCount += 1;
                 OnCreatureSpawnEvent?.Invoke();
 
-                stopSpawning = CreatureSpawnedCount >= MaxCreatureSpawnAmount;
+                stopSpawning = CreatureSpawnedCount >= _spawnerSettings.MaxCreatureSpawnAmount;
                 if (stopSpawning)
                     break;
             }

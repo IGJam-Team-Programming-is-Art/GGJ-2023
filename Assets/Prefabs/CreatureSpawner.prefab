@@ -142,8 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c103a0846f54acb9ef4e38f8cb434e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPulseInterval: 3
-  SpawnPulseIntervalVariation: 0.3
-  CreatureSpawnedCount: 0
-  MaxCreatureSpawnAmount: 10
+  _spawnerSettings: {fileID: 11400000, guid: 6ee88767f0a47204c85bfc00de716933, type: 2}
   CreatureType: 0
+  CreatureSpawnedCount: 0

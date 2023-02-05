@@ -7,27 +7,12 @@ using UnityEngine.Assertions;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
 
-public class WaveSettings
-{
-}
-
 public class WaveStatus
 {
     public bool IsWaveActive;
     public int TotalWaveCount;
 
-    public float CalmPeriodDurationSeconds = 15f;
-
-    public int ExistingSpawnerTargetAmount = 5;
-    public int ExistingCreaturesTargetAmount = 10;
-
-    /// <summary>
-    /// Amount of target of total spawned spawners for one wave
-    /// </summary>
-    public int CreatedSpawnerTargetAmount;
-
     public int AlreadyCreatedSpawnerCount;
-    public bool IsSpawnerTargetReached => AlreadyCreatedSpawnerCount >= CreatedSpawnerTargetAmount;
 }
 
 public class WaveController : IDisposable, IStartable
@@ -35,17 +20,24 @@ public class WaveController : IDisposable, IStartable
     private readonly CancellationTokenSource _cts;
 
     private readonly WaveStatus _waveStatus;
+    private readonly WaveSettings _waveSettings;
     private readonly SpawnerStatus _spawnerStatus;
     private readonly CreatureSpawnerController _creatureSpawnerController;
+
+    public bool IsSpawnerTargetReached =>
+        _waveStatus.AlreadyCreatedSpawnerCount >= _waveSettings.CreatedSpawnerTargetAmount;
+
     public event Action StartingWaveEvent;
 
     public WaveController(WaveStatus waveStatus,
         SpawnerStatus spawnerStatus,
-        CreatureSpawnerController creatureSpawnerController)
+        CreatureSpawnerController creatureSpawnerController,
+        WaveSettings waveSettings)
     {
         _cts = new();
 
         _waveStatus = waveStatus;
+        _waveSettings = waveSettings;
         _spawnerStatus = spawnerStatus;
         _creatureSpawnerController = creatureSpawnerController;
 
@@ -65,9 +57,9 @@ public class WaveController : IDisposable, IStartable
                         .SuppressCancellationThrow();
 
                     Debug.LogWarning(
-                        $"Wave {_waveStatus.TotalWaveCount} has ended | Calm period of {_waveStatus.CalmPeriodDurationSeconds} seconds");
+                        $"Wave {_waveStatus.TotalWaveCount} has ended | Calm period of {_waveSettings.CalmPeriodDurationSeconds} seconds");
 
-                    await UniTask.Delay(TimeSpan.FromSeconds(_waveStatus.CalmPeriodDurationSeconds),
+                    await UniTask.Delay(TimeSpan.FromSeconds(_waveSettings.CalmPeriodDurationSeconds),
                             cancellationToken: ct)
                         .SuppressCancellationThrow();
                 } while (ct.IsCancellationRequested is false);
@@ -93,12 +85,11 @@ public class WaveController : IDisposable, IStartable
     private async UniTaskVoid CreateSpawners(CancellationToken ct)
     {
         const double checkIntervalSeconds = 2f;
-        _waveStatus.CreatedSpawnerTargetAmount = 1;
 
-        while (ct.IsCancellationRequested is false && _waveStatus.IsSpawnerTargetReached is false)
+        while (ct.IsCancellationRequested is false && IsSpawnerTargetReached is false)
         {
             var activeSpawnerCount = _spawnerStatus.ActiveSpawnerCount;
-            var simultaneousSpawnerTargetAmount = _waveStatus.ExistingSpawnerTargetAmount;
+            var simultaneousSpawnerTargetAmount = _waveSettings.ExistingSpawnerTargetAmount;
 
             //If we have less spawners than desired, spawn one
             var lessSpawnerThanDesired = simultaneousSpawnerTargetAmount > activeSpawnerCount;
@@ -117,9 +108,9 @@ public class WaveController : IDisposable, IStartable
     private float GetAggro()
     {
         var existingSpawnersWeight = 1 -
-                                     Mathf.InverseLerp(0, _waveStatus.ExistingSpawnerTargetAmount,
+                                     Mathf.InverseLerp(0, _waveSettings.ExistingSpawnerTargetAmount,
                                          _spawnerStatus.ActiveSpawnerCount);
-        var existingEnemiesWeight = 1 - Mathf.InverseLerp(0, _waveStatus.ExistingCreaturesTargetAmount,
+        var existingEnemiesWeight = 1 - Mathf.InverseLerp(0, _waveSettings.ExistingCreaturesTargetAmount,
             _spawnerStatus.ActiveCreatureCount);
 
         return math.clamp(existingSpawnersWeight + existingEnemiesWeight, 0, 1);
@@ -140,7 +131,7 @@ public class WaveController : IDisposable, IStartable
     /// </summary>
     private void OnWaveOver()
     {
-        if (!_spawnerStatus.IsWaveActive && _waveStatus.IsSpawnerTargetReached)
+        if (!_spawnerStatus.IsWaveActive && IsSpawnerTargetReached)
             _waveStatus.IsWaveActive = false;
     }
 

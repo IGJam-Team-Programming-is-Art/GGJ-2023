@@ -9,6 +9,7 @@ public class GameSceneScope : LifetimeScope
 
     [SerializeField] private Camera _camera;
 
+    [SerializeField] private WaveSettings _waveSettings;
     [SerializeField] private CreatureDataCollection _creatureDataCollection;
     [SerializeField] private CreatureSpawnerCollection _creatureSpawnerCollection;
 
@@ -49,6 +50,7 @@ public class GameSceneScope : LifetimeScope
     {
         builder.RegisterInstance(_creatureDataCollection);
         builder.RegisterInstance(_creatureSpawnerCollection);
+        builder.RegisterInstance(_waveSettings);
     }
 
     private void RegisterModel(IContainerBuilder builder)

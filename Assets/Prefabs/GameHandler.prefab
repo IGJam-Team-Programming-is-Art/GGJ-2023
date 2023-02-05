@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 6306095043842280685}
   _player: {fileID: 0}
   _tree: {fileID: 0}
+  _camera: {fileID: 0}
+  _waveSettings: {fileID: 11400000, guid: 67251673739b26e44aeb1cdbb76b0b82, type: 2}
   _creatureDataCollection: {fileID: 11400000, guid: 145be324ae6fc5c44a87bea199c6d212,
     type: 2}
   _creatureSpawnerCollection: {fileID: 11400000, guid: 9d1ce96c15e327447aeb6ee4ace43663,
