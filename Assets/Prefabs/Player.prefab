@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 828206500416837675}
   - component: {fileID: 656182487738516613}
   - component: {fileID: 2082107864}
+  - component: {fileID: 52269821}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -361,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fede262c135374ba307dd86c3c7440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentWeapon: {fileID: 11400000, guid: f8508e4d4f63d9642876c88e3c6b99c2, type: 2}
+  CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
 --- !u!114 &828206500416837675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +406,19 @@ MonoBehaviour:
   BuildingPrefab: {fileID: 6487472668912730964, guid: 85f26605ff8101e4381e6132261f4e3b,
     type: 3}
   Cooldown: 1
+--- !u!114 &52269821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919368962219704047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b3e2591cf564c40a49b1f193fc11be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
 --- !u!1 &5598202974139586217
 GameObject:
   m_ObjectHideFlags: 0

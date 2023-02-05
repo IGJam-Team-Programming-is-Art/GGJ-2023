@@ -23,7 +23,7 @@ public class Hitpoints : MonoBehaviour
     /// <param name="value"></param>
     public void Modify(int value)
     {
-        Current = math.min(Current + value, Max);
+        Current = math.clamp(Current + value, 0, Max);
         OnModify?.Invoke(value);
 
         CheckHitpoints();
@@ -31,15 +31,17 @@ public class Hitpoints : MonoBehaviour
 
     private void CheckHitpoints()
     {
-        if (Current is not 0)
+        if (Current > 0)
             return;
 
         Debug.LogWarning("Destroying entity");
         OnDeath?.Invoke();
+
     }
 
     public void ResetHitpoints()
     {
         Current = Max;
+        OnModify?.Invoke(Max);
     }
 }
