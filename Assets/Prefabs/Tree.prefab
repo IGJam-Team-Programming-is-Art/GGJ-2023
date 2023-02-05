@@ -56,6 +56,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2817282441712537595}
   - component: {fileID: 997279249195452650}
+  - component: {fileID: 1746847975}
+  - component: {fileID: 614491799947060222}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -95,6 +97,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Current>k__BackingField: 500
   <Max>k__BackingField: 500
+--- !u!114 &1746847975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581329481288889133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bd293f3b26a404692c9370a51fd9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: {fileID: 0}
+  Interval: 2
+  Amount: 1
+--- !u!114 &614491799947060222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581329481288889133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7c9377b7ebf5a743ac417191d50c3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6848630457744528988
 GameObject:
   m_ObjectHideFlags: 0
