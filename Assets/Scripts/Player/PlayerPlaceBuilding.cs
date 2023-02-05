@@ -7,8 +7,14 @@ public class PlayerPlaceBuilding : MonoBehaviour
 {
     [SerializeField] GameObject BuildingPrefab;
     [SerializeField] float Cooldown;
+    [SerializeField] private GameOverHandler _gameOverHandler;
 
     private float _cooldownEndTimestamp;
+
+    private void Awake()
+    {
+        _gameOverHandler.OnGameOver += OnGameOver;
+    }
 
     public void OnBuildTargeted(InputAction.CallbackContext context)
     {
@@ -16,6 +22,12 @@ public class PlayerPlaceBuilding : MonoBehaviour
         var target = Extensions.GetGroundPoint(screenPos);
         Build(target, BuildingPrefab);
     }
+
+    private void OnGameOver()
+    {
+        this.enabled = false;
+    }
+
 
     private void Build(Vector3 targetPoint, GameObject BuildingPrefab)
     {

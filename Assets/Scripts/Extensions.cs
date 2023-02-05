@@ -20,6 +20,10 @@ public static class Extensions
     public static Vector3 GetGroundPoint(Vector2 mousePos)
     {
         float distance;
+        if (Camera.main == null)
+        {
+            return Vector3.zero;
+        }
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         if (plane.Raycast(ray, out distance))
         {
