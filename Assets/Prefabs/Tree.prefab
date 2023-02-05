@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7270099378750881553}
   - component: {fileID: 2306496439217719238}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,10 +55,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2817282441712537595}
+  - component: {fileID: 4770666817225413007}
   - component: {fileID: 997279249195452650}
   - component: {fileID: 1746847975}
   - component: {fileID: 614491799947060222}
   - component: {fileID: 292010829069918641}
+  - component: {fileID: 2300773008287112159}
   m_Layer: 6
   m_Name: Tree
   m_TagString: Tree
@@ -84,6 +86,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4770666817225413007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581329481288889133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab63fbaa32fae74daa2ca7521668aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: 0
 --- !u!114 &997279249195452650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +156,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!135 &2300773008287112159
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581329481288889133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.31
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6848630457744528988
 GameObject:
   m_ObjectHideFlags: 0

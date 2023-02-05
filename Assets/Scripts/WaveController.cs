@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Assertions;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,8 @@ public class WaveStatus
 {
     public bool IsWaveActive;
     public int TotalWaveCount;
+
+    public float CalmPeriodDurationSeconds = 15f;
 
     public int ExistingSpawnerTargetAmount = 5;
     public int ExistingCreaturesTargetAmount = 10;
@@ -34,6 +37,7 @@ public class WaveController : IDisposable, IStartable
     private readonly WaveStatus _waveStatus;
     private readonly SpawnerStatus _spawnerStatus;
     private readonly CreatureSpawnerController _creatureSpawnerController;
+    public event Action StartingWaveEvent;
 
     public WaveController(WaveStatus waveStatus,
         SpawnerStatus spawnerStatus,
@@ -53,11 +57,20 @@ public class WaveController : IDisposable, IStartable
         UniTask.Void(
             async ct =>
             {
-                StartWave();
+                do
+                {
+                    StartWave();
 
-                await UniTask.WaitUntil(() => _waveStatus.IsWaveActive is false, cancellationToken: ct)
-                    .SuppressCancellationThrow();
-                await UniTask.Delay(TimeSpan.FromSeconds(15f), cancellationToken: ct).SuppressCancellationThrow();
+                    await UniTask.WaitUntil(() => _waveStatus.IsWaveActive is false, cancellationToken: ct)
+                        .SuppressCancellationThrow();
+
+                    Debug.LogWarning(
+                        $"Wave {_waveStatus.TotalWaveCount} has ended | Calm period of {_waveStatus.CalmPeriodDurationSeconds} seconds");
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(_waveStatus.CalmPeriodDurationSeconds),
+                            cancellationToken: ct)
+                        .SuppressCancellationThrow();
+                } while (ct.IsCancellationRequested is false);
             },
             _cts.Token);
     }
@@ -67,6 +80,8 @@ public class WaveController : IDisposable, IStartable
         _waveStatus.TotalWaveCount += 1;
         _waveStatus.IsWaveActive = true;
 
+        Debug.LogWarning($"Starting Wave {_waveStatus.TotalWaveCount}");
+        StartingWaveEvent?.Invoke();
         CreateSpawners(_cts.Token).Forget();
     }
 

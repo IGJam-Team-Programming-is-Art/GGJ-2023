@@ -19,13 +19,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 796478707999001897, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
+      propertyPath: _retargetingInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796478707999001897, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
       propertyPath: <CreatureType>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: m_Speed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
@@ -35,12 +40,17 @@ PrefabInstance:
     - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4950879507410629124, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: m_Name
       value: TEST_RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950879507410629124, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5969032934861621096, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
@@ -97,5 +107,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7242168771684806483, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: CurrentWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b3684a36a80da47911fd83ff4595cc, type: 3}

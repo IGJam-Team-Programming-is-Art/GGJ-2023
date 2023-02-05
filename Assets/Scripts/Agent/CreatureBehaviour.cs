@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ public class CreatureBehaviour : MonoBehaviour
     [field: SerializeField] public Creature CreatureType { get; private set; }
 
     [SerializeField] private bool _isAttacking = false;
+    private bool _retargetImmediately;
 
     private float _lastRetargetingTimestamp;
     [SerializeField] private float _retargetingInterval = 1f;
@@ -50,8 +52,10 @@ public class CreatureBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (_isAttacking is false && Time.time - _lastRetargetingTimestamp > _retargetingInterval)
+        if (_retargetImmediately ||
+            (_isAttacking is false && Time.time - _lastRetargetingTimestamp > _retargetingInterval))
         {
+            _retargetImmediately = false;
             _lastRetargetingTimestamp = Time.time;
             SelectTarget();
         }
@@ -59,7 +63,8 @@ public class CreatureBehaviour : MonoBehaviour
         if (Time.time - _lastAttackCheckTimestamp > _lastAttackCheckInterval)
         {
             _lastAttackCheckTimestamp = Time.time;
-            var isWithingAttackingDistance = _navMeshAgent.remainingDistance < 0.5;
+            var isWithingAttackingDistance = Vector3.Distance(transform.position, _agentMovement.TargetPosition) <
+                                             _navMeshAgent.stoppingDistance + 0.5f;
             _isAttacking = isWithingAttackingDistance;
             if (isWithingAttackingDistance)
             {
@@ -78,10 +83,15 @@ public class CreatureBehaviour : MonoBehaviour
     /// </summary>
     private void SelectTarget()
     {
-        _agentMovement.SetTarget(
-            _targetAssignmentController.GetTarget(transform, _agentMovement.Target,
-                _navMeshAgent.stoppingDistance * 1.5f),
-            true);
+        var target = _targetAssignmentController.GetTarget(transform, _agentMovement.Target,
+            _navMeshAgent.stoppingDistance * 2);
+        _agentMovement.SetTarget(target, false);
+        target.GetComponent<Hitpoints>().OnDeath += OnTargetDeath;
+    }
+
+    private void OnTargetDeath()
+    {
+        _retargetImmediately = true;
     }
 
     private void OnDeath()
