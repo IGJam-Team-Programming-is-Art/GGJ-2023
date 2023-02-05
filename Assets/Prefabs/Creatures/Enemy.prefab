@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 796478707999001897}
   - component: {fileID: 8831109927747428879}
   - component: {fileID: 3544854584000306640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fede262c135374ba307dd86c3c7440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
+  CurrentWeapon: {fileID: 11400000, guid: d022562e202327840bc4359212477a9b, type: 2}
 --- !u!114 &8920031753512405102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CreatureType>k__BackingField: 0
+  _retargetingInterval: 3
+  _lastAttackCheckInterval: 0.5
 --- !u!114 &8831109927747428879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +352,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

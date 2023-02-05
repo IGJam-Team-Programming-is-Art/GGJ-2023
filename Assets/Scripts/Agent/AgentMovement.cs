@@ -10,7 +10,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] private float _normalSpeed;
 
     [SerializeField] private bool _isMoving;
-    [field: SerializeField] public Transform Target { get; private set; }
+    [field: SerializeField] public Transform Target { get; private set; } = null;
     [field: SerializeField] public Vector3 TargetPosition { get; private set; }
 
     private void Awake()
@@ -27,17 +27,16 @@ public class AgentMovement : MonoBehaviour
     /// <summary>
     ///     Sets target object for agent
     /// </summary>
-    /// <param name="obj"></param>
+    /// <param name="targetTransform"></param>
     /// <param name="isMoving"></param>
-    public void SetTarget(GameObject obj, bool isMoving)
+    public void SetTarget(Transform targetTransform, bool isMoving)
     {
         _isMoving = isMoving;
         _navMeshAgent.isStopped = false;
 
-        var t = obj.transform;
-        var centerPosition = t.position;
+        var centerPosition = targetTransform.position;
 
-        Target = t;
+        Target = targetTransform;
         TargetPosition = centerPosition;
 
         _navMeshAgent.SetDestination(TargetPosition);
@@ -46,7 +45,6 @@ public class AgentMovement : MonoBehaviour
     /// <summary>
     /// Toggle movement, but not rotation towards target
     /// </summary>
-    /// <remarks>Use <see cref="StopFollowTarget"/> to stop following target entirely</remarks>>
     public void ToggleMovement(bool setActive)
     {
         _navMeshAgent.speed = setActive ? _normalSpeed : 0;

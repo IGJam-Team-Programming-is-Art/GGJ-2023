@@ -50,7 +50,16 @@ public class WaveController : IDisposable, IStartable
 
     public void Start()
     {
-        StartWave();
+        UniTask.Void(
+            async ct =>
+            {
+                StartWave();
+
+                await UniTask.WaitUntil(() => _waveStatus.IsWaveActive is false, cancellationToken: ct)
+                    .SuppressCancellationThrow();
+                await UniTask.Delay(TimeSpan.FromSeconds(15f), cancellationToken: ct).SuppressCancellationThrow();
+            },
+            _cts.Token);
     }
 
     private void StartWave()
@@ -69,7 +78,7 @@ public class WaveController : IDisposable, IStartable
     private async UniTaskVoid CreateSpawners(CancellationToken ct)
     {
         const double checkIntervalSeconds = 2f;
-        _waveStatus.CreatedSpawnerTargetAmount = 5;
+        _waveStatus.CreatedSpawnerTargetAmount = 1;
 
         while (ct.IsCancellationRequested is false && _waveStatus.IsSpawnerTargetReached is false)
         {
@@ -116,7 +125,7 @@ public class WaveController : IDisposable, IStartable
     /// </summary>
     private void OnWaveOver()
     {
-        if (_spawnerStatus.IsWaveActive && _waveStatus.IsSpawnerTargetReached)
+        if (!_spawnerStatus.IsWaveActive && _waveStatus.IsSpawnerTargetReached)
             _waveStatus.IsWaveActive = false;
     }
 

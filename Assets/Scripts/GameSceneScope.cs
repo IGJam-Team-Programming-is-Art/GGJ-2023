@@ -5,6 +5,7 @@ using VContainer.Unity;
 public class GameSceneScope : LifetimeScope
 {
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _tree;
 
     [SerializeField] private CreatureDataCollection _creatureDataCollection;
     [SerializeField] private CreatureSpawnerCollection _creatureSpawnerCollection;
@@ -15,10 +16,18 @@ public class GameSceneScope : LifetimeScope
         if (_player == null)
             _player = GameObject.FindWithTag("Player");
 
+        if (_tree == null)
+            _tree = GameObject.FindWithTag("Tree");
+
         builder.RegisterInstance<PlayerReferences>(new()
         {
             GameObject = _player,
+            Transform = _player.transform,
             Hitpoints = _player.GetComponent<Hitpoints>()
+        });
+        builder.RegisterInstance<TreeReferences>(new()
+        {
+            Transform = _tree.transform
         });
 
         RegisterScriptableObjects(builder);
@@ -44,13 +53,4 @@ public class GameSceneScope : LifetimeScope
         builder.RegisterComponentInHierarchy<CreatureSpawnerController>();
         builder.RegisterEntryPoint<WaveController>(Lifetime.Scoped).AsSelf();
     }
-}
-
-/// <summary>
-///     Stores references to player components
-/// </summary>
-public struct PlayerReferences
-{
-    public GameObject GameObject;
-    public Hitpoints Hitpoints;
 }

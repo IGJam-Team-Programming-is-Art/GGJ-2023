@@ -10,14 +10,14 @@ public class CreatureSpawner : MonoBehaviour
 {
     private CancellationTokenSource _cts;
 
-    public float SpawnPulseInterval = 3f;
+    public float SpawnPulseInterval = 5f;
     public float SpawnPulseIntervalVariation = 0.3f;
-    public Range AmountPerPulse = new(1, 3);
+    public Range AmountPerPulse = new(0, 2);
 
     [FormerlySerializedAs("SpawnedCreatureCount")]
     public int CreatureSpawnedCount;
 
-    public int MaxCreatureSpawnAmount = 10;
+    public int MaxCreatureSpawnAmount = 1;
 
     public Creature CreatureType;
     public ObjectPool<CreatureBehaviour> CreaturePool;

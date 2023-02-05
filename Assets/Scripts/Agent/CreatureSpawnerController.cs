@@ -12,7 +12,7 @@ public class SpawnerStatus
     public int ActiveCreatureCount;
 
     public (float Tree, float Plant) ClosestSpawnDistance = (10f, 5f);
-    public (float Tree, float Plant) MaxSpawnDistance = (50f, 20f);
+    public (float Tree, float Plant) MaxSpawnDistance = (30f, 10f);
 
     public bool IsWaveActive => ActiveSpawnerCount is not 0 || ActiveCreatureCount is not 0;
 }
@@ -28,6 +28,8 @@ public class CreatureSpawnerController : MonoBehaviour
 
     private ObjectPool<CreatureSpawner> _spawnerPools;
     private readonly Dictionary<Creature, ObjectPool<CreatureBehaviour>> _creaturePools = new(4);
+
+    private int _creatureInstanceCounter;
 
     /// <summary>
     /// Triggered when creature count or spawner count goes down
@@ -54,11 +56,14 @@ public class CreatureSpawnerController : MonoBehaviour
             var pool = new ObjectPool<CreatureBehaviour>(() =>
             {
                 var creature = Instantiate(creatureData.Prefab).GetComponent<CreatureBehaviour>();
+
+                creature.name = $"{creature.name}_{_creatureInstanceCounter}";
                 creature.gameObject.SetActive(false);
 
                 creature.DeathEvent += OnCreatureDied;
                 creature.TargetAssignmentController = _targetAssignmentController;
 
+                _creatureInstanceCounter += 1;
                 return creature;
             }, actionOnRelease: creature => creature.gameObject.SetActive(false));
 
@@ -150,5 +155,5 @@ public class CreatureSpawnerController : MonoBehaviour
 public enum Creature
 {
     None,
-    Melee
+    Ranged
 }
