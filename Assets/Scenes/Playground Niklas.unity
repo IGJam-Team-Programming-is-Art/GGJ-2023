@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,10 +130,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845220649}
     m_Modifications:
-    - target: {fileID: 406453590237150811, guid: 9dbba943ecd034b49b930cf3a9ee9671,
+    - target: {fileID: 2082107864, guid: 9dbba943ecd034b49b930cf3a9ee9671, type: 3}
+      propertyPath: _gameOverHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 656182487738516613, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
-      propertyPath: m_Constraints
-      value: 80
+      propertyPath: _gameOverHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 828206500416837675, guid: 9dbba943ecd034b49b930cf3a9ee9671,
+        type: 3}
+      propertyPath: _gameOverHandler
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2307857539384707971, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
@@ -209,7 +218,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 52269818}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636264867}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91b3e2591cf564c40a49b1f193fc11be, type: 3}
@@ -846,26 +855,6 @@ PrefabInstance:
       propertyPath: HitpointsForGameover
       value: 
       objectReference: {fileID: 1746847974}
-    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-        type: 3}
-      propertyPath: IngameUI
-      value: 
-      objectReference: {fileID: 67386261}
-    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-        type: 3}
-      propertyPath: GameOverScreen
-      value: 
-      objectReference: {fileID: 632245855}
-    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-        type: 3}
-      propertyPath: RestartHintScreen
-      value: 
-      objectReference: {fileID: 1671435073}
-    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-        type: 3}
-      propertyPath: HitpointsForGameover
-      value: 
-      objectReference: {fileID: 1746847974}
     - target: {fileID: 6306095043842280685, guid: 5d2b22e9711039f468f29fb2857cf7a0,
         type: 3}
       propertyPath: m_Name
@@ -874,18 +863,13 @@ PrefabInstance:
     - target: {fileID: 7629098829639699021, guid: 5d2b22e9711039f468f29fb2857cf7a0,
         type: 3}
       propertyPath: autoInjectGameObjects.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7629098829639699021, guid: 5d2b22e9711039f468f29fb2857cf7a0,
         type: 3}
       propertyPath: autoInjectGameObjects.Array.data[1]
       value: 
       objectReference: {fileID: 1857064233}
-    - target: {fileID: 7629098829639699021, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-        type: 3}
-      propertyPath: autoInjectGameObjects.Array.data[2]
-      value: 
-      objectReference: {fileID: 1636264867}
     - target: {fileID: 9102648670527979002, guid: 5d2b22e9711039f468f29fb2857cf7a0,
         type: 3}
       propertyPath: m_RootOrder
@@ -949,18 +933,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 452490526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &452490529 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 452490526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b18636b2cbcff4e88eed251e21928b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &632245855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,12 +1756,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 207598993078547458, guid: 0dcf9ccaf3f47eb47aa1a1fbb8cf99b8,
     type: 3}
   m_PrefabInstance: {fileID: 1497613526}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1636264867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3919368962219704047, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-    type: 3}
-  m_PrefabInstance: {fileID: 52269818}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1671435073
 GameObject:
@@ -2880,6 +2846,6 @@ PrefabInstance:
         type: 3}
       propertyPath: GameOverHandler
       value: 
-      objectReference: {fileID: 452490529}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42e36f95669aef4caf9acb0127b67c1, type: 3}

@@ -14,7 +14,10 @@ public class PlayerPlaceBuilding : MonoBehaviour
 
     private void Awake()
     {
-        _gameOverHandler.OnGameOver += OnGameOver;
+        if (_gameOverHandler != null)
+        {
+            _gameOverHandler.OnGameOver += OnGameOver;
+        }
     }
 
     public void OnBuildTargeted(InputAction.CallbackContext context)

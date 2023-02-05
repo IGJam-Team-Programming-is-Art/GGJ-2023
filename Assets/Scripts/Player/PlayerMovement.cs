@@ -20,7 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _gameOverHandler.OnGameOver += OnGameOver;
+        if (_gameOverHandler != null)
+        {
+            _gameOverHandler.OnGameOver += OnGameOver;
+        }
         _rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInput>();
     }
