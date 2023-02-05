@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1893a112ba7a9943b8ad2d9bef7f538, type: 3}
   m_Name: Water Gun
   m_EditorClassIdentifier: 
-  Cooldown: 0.1
-  InitialDelay: 0
-  Damage: 5
+  Cooldown: 0.25
+  InitialDelay: 0.1
+  EndDelay: 0.1
+  Damage: 10
   Type: 0
   ValidTargets: 03000000
   Projectile: {fileID: 823074201208157880, guid: 03e6e8d99ba62a241ab90f568ed4f777,

@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-
-
+using UnityEngine.Events;
 
 public class WeaponUser : MonoBehaviour
 {
     const string ProjectileSpawnPointTag = "ProjectileSpawn";
     public Weapon CurrentWeapon;
-    public event Action OnPreswing;
+    public UnityEvent OnPreswing;
+    public UnityEvent OnEnd;
 
     //Gameplay Variables
     private float _cooldownEndTimeStamp;
@@ -36,6 +36,7 @@ public class WeaponUser : MonoBehaviour
             Debug.Log("Wanted to shoot, but cooldown was still running");
             return;
         }
+        OnPreswing?.Invoke();
         _cooldownEndTimeStamp = Time.time + CurrentWeapon.Cooldown;
 
         //Wait Pressing Duration, then do actual Shot
@@ -83,6 +84,12 @@ public class WeaponUser : MonoBehaviour
             // Select all enemies in Area defined by Width and Radius_Length (should be a Rectangle Region)
             // Damage all selected enemies
         }
+
+        UniTask.Void(async () =>
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(CurrentWeapon.EndDelay));
+            OnEnd.Invoke();
+        });
     }
 
     private Vector3 GetProjectileSpawnPoint()

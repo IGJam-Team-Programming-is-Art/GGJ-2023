@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1893a112ba7a9943b8ad2d9bef7f538, type: 3}
   m_Name: Pinecone Gun
   m_EditorClassIdentifier: 
-  Cooldown: 0.5
-  InitialDelay: 0
+  Cooldown: 2
+  InitialDelay: 0.25
+  EndDelay: 0.5
   Damage: 5
   Type: 0
   ValidTargets: 03000000
   Projectile: {fileID: 823074201208157880, guid: 9a374cc64c671864a909202b5222ae24,
     type: 3}
-  Speed: 8
+  Speed: 35
   TargetGround: 1
   LifeTime: 4
   Width: 0

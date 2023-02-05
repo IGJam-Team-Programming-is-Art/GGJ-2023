@@ -130,20 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845220649}
     m_Modifications:
-    - target: {fileID: 2082107864, guid: 9dbba943ecd034b49b930cf3a9ee9671, type: 3}
-      propertyPath: _gameOverHandler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 656182487738516613, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: _gameOverHandler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 828206500416837675, guid: 9dbba943ecd034b49b930cf3a9ee9671,
-        type: 3}
-      propertyPath: _gameOverHandler
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2307857539384707971, guid: 9dbba943ecd034b49b930cf3a9ee9671,
         type: 3}
       propertyPath: m_RootOrder
