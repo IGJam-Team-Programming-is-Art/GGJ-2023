@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 _currentMoveDirection;
     [SerializeField] private Vector2 _currentViewDirection;
     [SerializeField] private GameOverHandler _gameOverHandler;
+
+    public UnityEvent OnWalkStart;
+    public UnityEvent OnWalkStop;
 
     private PlayerInput input;
 
@@ -48,14 +52,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_currentViewDirection.sqrMagnitude < 0.01f) return;
+        if (_currentViewDirection.sqrMagnitude < 0.01f)
+        {
+            return;
+        }
         var target = transform.position + _currentViewDirection.to3D();
         transform.LookAt(target, Vector3.up);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        var oldIsMoving = _isMoving;
         _isMoving = !context.canceled;
+        if (oldIsMoving != _isMoving)
+        {
+            if (_isMoving)
+            {
+                OnWalkStart.Invoke();
+            }
+            else
+            {
+                OnWalkStop.Invoke();
+            }
+        }
         _currentMoveDirection = context.ReadValue<Vector2>().normalized;
     }
 

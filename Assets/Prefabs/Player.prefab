@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 656182487738516613}
   - component: {fileID: 2082107864}
   - component: {fileID: 52269821}
+  - component: {fileID: 8942974829901286447}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -364,6 +365,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
+  OnPreswing:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8942974829901286447}
+        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
+        m_MethodName: DefaultPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Attack
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8942974829901286447}
+        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
+        m_MethodName: DefaultPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Idle
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &828206500416837675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +411,36 @@ MonoBehaviour:
   _currentMoveDirection: {x: 0, y: 0}
   _currentViewDirection: {x: 0, y: 0}
   _gameOverHandler: {fileID: 0}
+  OnWalkStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8942974829901286447}
+        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
+        m_MethodName: DefaultPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Walk
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnWalkStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8942974829901286447}
+        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
+        m_MethodName: DefaultPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Idle
+          m_BoolArgument: 0
+        m_CallState: 2
   Speed: 10
 --- !u!114 &656182487738516613
 MonoBehaviour:
@@ -423,6 +484,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
+--- !u!114 &8942974829901286447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919368962219704047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d492eae3eb61f4d82a0ce4a78e7163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4317782871959955939
 GameObject:
   m_ObjectHideFlags: 0
