@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2214975704972605608}
   - component: {fileID: 2214975704972605607}
   - component: {fileID: 2214975704972605606}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2581321086677504431}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Point
   m_TagString: ProjectileSpawn
   m_Icon: {fileID: 0}
@@ -147,7 +147,8 @@ GameObject:
   - component: {fileID: 8808045314424626691}
   - component: {fileID: 5946084666656957407}
   - component: {fileID: 8886052342533948147}
-  m_Layer: 0
+  - component: {fileID: 7543693723896497102}
+  m_Layer: 6
   m_Name: Turret
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -252,6 +253,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c9377b7ebf5a743ac417191d50c3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &7543693723896497102
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487472668912730964}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &76363628867867425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,6 +281,21 @@ PrefabInstance:
       propertyPath: HitPointsReference
       value: 
       objectReference: {fileID: 2972420577919411927}
+    - target: {fileID: 3668733342786430036, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668733343161027128, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668733343319645352, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3668733343319645355, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -273,6 +305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668733343452828494, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3668733343494055478, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
@@ -384,6 +421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP UI Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 3668733343494055479, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0f8a1e69e0a9045b4a27e976b0878c, type: 3}
 --- !u!224 &3739880882756252951 stripped
@@ -454,10 +496,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 88f103159d7785f4e81c7e540de59290,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e12b7d45b2cd6b42a8648033b778428, type: 2}
     - target: {fileID: 919132149155446097, guid: 88f103159d7785f4e81c7e540de59290,
         type: 3}
       propertyPath: m_Name
       value: Graphics
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 88f103159d7785f4e81c7e540de59290,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f103159d7785f4e81c7e540de59290, type: 3}

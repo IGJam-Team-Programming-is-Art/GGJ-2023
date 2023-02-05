@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4906501167169477585}
   - component: {fileID: 6718669143759816518}
   - component: {fileID: 4818945985301196233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Watergun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 656182487738516613}
   - component: {fileID: 2082107864}
   - component: {fileID: 52269821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4873839639155860345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileSpawn
   m_TagString: ProjectileSpawn
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 8609009951805803837}
   - component: {fileID: 1159077368720549279}
   - component: {fileID: 8127618603129219279}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

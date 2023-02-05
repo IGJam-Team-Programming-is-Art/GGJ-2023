@@ -1,5 +1,8 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 ///     Handles target assignment for agents
@@ -7,15 +10,40 @@ using UnityEngine;
 [UsedImplicitly]
 public class TargetAssignmentController
 {
-    private readonly PlayerReferences _playerReferences;
+    private Collider[] _collider;
+    private string _layer = "Tower";
 
-    public TargetAssignmentController(PlayerReferences playerReferences)
+    private readonly PlayerReferences _playerReferences;
+    private readonly TreeReferences _treeReferences;
+
+    public TargetAssignmentController(PlayerReferences playerReferences, TreeReferences treeReferences)
     {
         _playerReferences = playerReferences;
+        _treeReferences = treeReferences;
+
+        _collider = new Collider[10];
     }
 
-    public GameObject GetTarget()
+    public Transform GetTarget(Transform agent, [CanBeNull] Transform currentTarget, float targetingDistance)
     {
-        return _playerReferences.GameObject;
+        //If no close object found
+        var playerReferencesTransform = _playerReferences.Transform;
+        var agentPosition = agent.position;
+
+        //Try to keep current target most of the time
+        var selectNewTargetChance = Random.Range(0f, 1f);
+        if (currentTarget != null && selectNewTargetChance < 0.9 &&
+            Vector3.Distance(agent.position, currentTarget.position) <= targetingDistance)
+            return currentTarget;
+
+        //Search all surrounding turrets
+        _collider = Physics.OverlapSphere(agentPosition, targetingDistance, LayerMask.GetMask(_layer));
+        if (_collider.Length is 0)
+            return _treeReferences.Transform;
+
+        Array.Sort(_collider,
+            (a, b) => (int)Mathf.Sign(Vector3.Distance(agentPosition, b.transform.position) -
+                                      Vector3.Distance(agentPosition, a.transform.position)));
+        return _collider[0].transform;
     }
 }
