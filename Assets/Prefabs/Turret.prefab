@@ -170,7 +170,6 @@ Transform:
   m_Children:
   - {fileID: 2214975704972605605}
   - {fileID: 2581321086677504431}
-  - {fileID: 4839350150005333597}
   - {fileID: 3033803263191887795}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -459,7 +458,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e77f4db52a089a44ab90daa7b6b581bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e77f4db52a089a44ab90daa7b6b581bb,
         type: 3}
@@ -526,6 +525,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: e77f4db52a089a44ab90daa7b6b581bb,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9a31bf08efe0d344588819526721c236, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e77f4db52a089a44ab90daa7b6b581bb, type: 3}
 --- !u!4 &3033803263191887795 stripped
