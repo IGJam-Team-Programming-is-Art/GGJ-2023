@@ -138,6 +138,7 @@ public class WaveController : IDisposable, IStartable
         if (!_spawnerStatus.IsWaveActive && IsSpawnerTargetReached)
         {
             _waveStatus.IsWaveActive = false;
+            _waveStatus.AlreadyCreatedSpawnerCount = 0;
             EndWaveEvent?.Invoke();
         }
     }
