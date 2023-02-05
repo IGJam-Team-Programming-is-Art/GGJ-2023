@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private Vector2 _currentMoveDirection;
     [SerializeField] private Vector2 _currentViewDirection;
-    [SerializeField] private GameOverHandler _gameOverHandler;
+    [SerializeField] [Inject] private GameOverHandler _gameOverHandler;
 
     private PlayerInput input;
 
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnGameOver()
     {
         input.enabled = false;
-        this.enabled = false;
+        enabled = false;
     }
 
     private void FixedUpdate()

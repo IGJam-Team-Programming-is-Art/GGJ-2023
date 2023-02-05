@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 public class PlayerPlaceBuilding : MonoBehaviour
 {
-    [SerializeField] GameObject BuildingPrefab;
-    [SerializeField] float Cooldown;
-    [SerializeField] private GameOverHandler _gameOverHandler;
+    [SerializeField] private GameObject BuildingPrefab;
+    [SerializeField] private float Cooldown;
+    [SerializeField] [Inject] private GameOverHandler _gameOverHandler;
 
     private float _cooldownEndTimestamp;
 
@@ -25,16 +26,13 @@ public class PlayerPlaceBuilding : MonoBehaviour
 
     private void OnGameOver()
     {
-        this.enabled = false;
+        enabled = false;
     }
 
 
     private void Build(Vector3 targetPoint, GameObject BuildingPrefab)
     {
-        if (_cooldownEndTimestamp > Time.time)
-        {
-            return;
-        }
+        if (_cooldownEndTimestamp > Time.time) return;
         _cooldownEndTimestamp = Time.time + Cooldown;
 
         Instantiate(BuildingPrefab, targetPoint, Quaternion.identity);

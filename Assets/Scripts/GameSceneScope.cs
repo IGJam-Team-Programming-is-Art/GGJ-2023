@@ -51,6 +51,7 @@ public class GameSceneScope : LifetimeScope
     {
         builder.Register<TargetAssignmentController>(Lifetime.Scoped);
         builder.RegisterComponentInHierarchy<CreatureSpawnerController>();
+        builder.RegisterComponentInHierarchy<GameOverHandler>();
         builder.RegisterEntryPoint<WaveController>(Lifetime.Scoped).AsSelf();
     }
 }

@@ -378,6 +378,7 @@ MonoBehaviour:
   _isMoving: 0
   _currentMoveDirection: {x: 0, y: 0}
   _currentViewDirection: {x: 0, y: 0}
+  _gameOverHandler: {fileID: 0}
   Speed: 10
 --- !u!114 &656182487738516613
 MonoBehaviour:
@@ -391,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2558729dfc620a74f930ad910a5aeb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameOverHandler: {fileID: 0}
 --- !u!114 &2082107864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +408,7 @@ MonoBehaviour:
   BuildingPrefab: {fileID: 6487472668912730964, guid: 85f26605ff8101e4381e6132261f4e3b,
     type: 3}
   Cooldown: 1
+  _gameOverHandler: {fileID: 0}
 --- !u!114 &52269821
 MonoBehaviour:
   m_ObjectHideFlags: 0
