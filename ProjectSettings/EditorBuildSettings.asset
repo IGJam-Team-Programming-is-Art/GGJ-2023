@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Playground Christoph.unity
-    guid: 2e31c41d006e86d45ae588537b575c3f
+    path: Assets/Scenes/Main Scene.unity
+    guid: 5b47972274afd6847b8971f7dec148ee
   m_configObjects: {}
