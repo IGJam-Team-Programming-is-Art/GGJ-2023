@@ -19,7 +19,7 @@ MonoBehaviour:
   ValidTargets: 03000000
   Projectile: {fileID: 823074201208157880, guid: 9a374cc64c671864a909202b5222ae24,
     type: 3}
-  Speed: 6
+  Speed: 8
   TargetGround: 1
   LifeTime: 4
   Width: 0

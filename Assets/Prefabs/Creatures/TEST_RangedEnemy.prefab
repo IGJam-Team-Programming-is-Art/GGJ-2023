@@ -7,15 +7,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 241502883090319172, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241502883090319172, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 796478707999001897, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: <CreatureType>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3544854584000306640, guid: 65b3684a36a80da47911fd83ff4595cc,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4950879507410629124, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
       propertyPath: m_Name
-      value: TEST_MeleeEnemy
+      value: TEST_RangedEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 5969032934861621096, guid: 65b3684a36a80da47911fd83ff4595cc,
         type: 3}
