@@ -122,7 +122,8 @@ public class CreatureSpawnerController : MonoBehaviour
 
             selectedPosition = new(x, y);
             tries += 1;
-        } while (NavMesh.SamplePosition(selectedPosition, out var _, 3f, NavMesh.AllAreas) is false && tries < 100);
+        } while (NavMesh.SamplePosition(selectedPosition.to3D(), out var _, 3f, NavMesh.AllAreas) is false &&
+                 tries < 100);
 
         if (tries >= 100) Debug.LogError("Tried 100 times to find suitable spawner position! Failed!");
 

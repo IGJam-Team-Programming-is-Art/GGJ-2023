@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c626befe87460d93e0ef512f0ce21d, type: 3}
   m_Name: WaveSettings
   m_EditorClassIdentifier: 
+  StartCalmPeriodSeconds: 4
   CalmPeriodDurationSeconds: 10
   ExistingSpawnerTargetAmount: 5
-  ExistingCreaturesTargetAmount: 10
+  ExistingCreaturesTargetAmount: 8
   CreatedSpawnerTargetAmount: 3
