@@ -23,11 +23,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_isMoving is false)
         {
-            _rb.velocity = Vector3.zero;
+            _rb.velocity = Vector3.zero + new Vector3(0, _rb.velocity.y, 0);
             return;
         }
 
         var velocity = new Vector3(_currentMoveDirection.x, 0f, _currentMoveDirection.y) * Speed;
+        velocity.y = _rb.velocity.y;
         _rb.velocity = velocity;
     }
 
