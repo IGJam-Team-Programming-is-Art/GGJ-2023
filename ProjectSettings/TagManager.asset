@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ProjectileSpawn
   - Enemy
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Tower
+  - Player
+  - Enemy
   - 
   - 
   - 
