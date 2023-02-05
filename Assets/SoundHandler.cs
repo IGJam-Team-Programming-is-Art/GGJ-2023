@@ -11,7 +11,7 @@ public class SoundHandler : MonoBehaviour
 
     [SerializeField] AudioSource AmbientSoundSource;
     [SerializeField] AudioSource MusicSource;
-    [SerializeField] GameOverHandler GameOverHandler;
+    [SerializeField, Inject] GameOverHandler GameOverHandler;
 
     [Inject] private WaveController _waveController;
 
