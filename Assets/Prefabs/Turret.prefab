@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2214975704972605608}
   - component: {fileID: 2214975704972605607}
   - component: {fileID: 2214975704972605606}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2581321086677504431}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Projectile Point
   m_TagString: ProjectileSpawn
   m_Icon: {fileID: 0}
@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5946084666656957407}
   - component: {fileID: 8886052342533948147}
   - component: {fileID: 7543693723896497102}
+  - component: {fileID: 4344016231270800978}
   m_Layer: 6
   m_Name: Turret
   m_TagString: Player
@@ -269,6 +270,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!135 &4344016231270800978
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487472668912730964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.85
+  m_Center: {x: 0, y: 0.61, z: 0}
 --- !u!1001 &76363628867867425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,17 +298,17 @@ PrefabInstance:
     - target: {fileID: 3668733342786430036, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3668733343161027128, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3668733343319645352, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3668733343319645355, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
@@ -309,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 3668733343452828494, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3668733343494055478, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
@@ -424,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 3668733343494055479, guid: fc0f8a1e69e0a9045b4a27e976b0878c,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0f8a1e69e0a9045b4a27e976b0878c, type: 3}
@@ -509,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 88f103159d7785f4e81c7e540de59290,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f103159d7785f4e81c7e540de59290, type: 3}

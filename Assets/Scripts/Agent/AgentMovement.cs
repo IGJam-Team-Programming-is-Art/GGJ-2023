@@ -9,8 +9,11 @@ public class AgentMovement : MonoBehaviour
 
     [SerializeField] private float _normalSpeed;
 
-    [SerializeField] private bool _isMoving;
+    [SerializeField] [Obsolete("No moving targets right now")]
+    private bool _isMoving;
+
     [field: SerializeField] public Transform Target { get; private set; } = null;
+    [field: SerializeField] public Collider TargetCollider { get; private set; } = null;
     [field: SerializeField] public Vector3 TargetPosition { get; private set; }
 
     private void Awake()
@@ -21,7 +24,7 @@ public class AgentMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_isMoving) _navMeshAgent.SetDestination(Target.transform.position);
+        if (_isMoving) _navMeshAgent.SetDestination(Target.position);
     }
 
     /// <summary>
@@ -34,10 +37,9 @@ public class AgentMovement : MonoBehaviour
         _isMoving = isMoving;
         _navMeshAgent.isStopped = false;
 
-        var centerPosition = targetTransform.position;
-
         Target = targetTransform;
-        TargetPosition = centerPosition;
+        TargetCollider = targetTransform.GetComponent<Collider>();
+        TargetPosition = TargetCollider.ClosestPoint(transform.position);
 
         _navMeshAgent.SetDestination(TargetPosition);
     }

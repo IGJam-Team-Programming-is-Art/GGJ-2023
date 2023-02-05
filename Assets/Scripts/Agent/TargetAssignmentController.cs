@@ -1,7 +1,9 @@
 ﻿using System;
 using JetBrains.Annotations;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -44,6 +46,8 @@ public class TargetAssignmentController
         Array.Sort(_collider,
             (a, b) => (int)Mathf.Sign(Vector3.Distance(agentPosition, b.transform.position) -
                                       Vector3.Distance(agentPosition, a.transform.position)));
-        return _collider[0].transform;
+        var selectedTransform = _collider[0].transform;
+        Assert.IsFalse(selectedTransform.IsDestroyed());
+        return selectedTransform;
     }
 }
