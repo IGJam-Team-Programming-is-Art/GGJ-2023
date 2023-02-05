@@ -28,6 +28,7 @@ public class WaveController : IDisposable, IStartable
         _waveStatus.AlreadyCreatedSpawnerCount >= _waveSettings.CreatedSpawnerTargetAmount;
 
     public event Action StartingWaveEvent;
+    public event Action EndWaveEvent;
 
     public WaveController(WaveStatus waveStatus,
         SpawnerStatus spawnerStatus,
@@ -49,6 +50,9 @@ public class WaveController : IDisposable, IStartable
         UniTask.Void(
             async ct =>
             {
+                await UniTask.Delay(TimeSpan.FromSeconds(_waveSettings.StartCalmPeriodSeconds), cancellationToken: ct)
+                    .SuppressCancellationThrow();
+
                 do
                 {
                     StartWave();
@@ -132,7 +136,10 @@ public class WaveController : IDisposable, IStartable
     private void OnWaveOver()
     {
         if (!_spawnerStatus.IsWaveActive && IsSpawnerTargetReached)
+        {
             _waveStatus.IsWaveActive = false;
+            EndWaveEvent?.Invoke();
+        }
     }
 
     public void Dispose()

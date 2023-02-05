@@ -3,6 +3,7 @@
 [CreateAssetMenu(menuName = "Create WaveSettings", fileName = "GameData/WaveSettings", order = 0)]
 public class WaveSettings : ScriptableObject
 {
+    public float StartCalmPeriodSeconds = 4f;
     public float CalmPeriodDurationSeconds = 15f;
 
     public int ExistingSpawnerTargetAmount = 5;
