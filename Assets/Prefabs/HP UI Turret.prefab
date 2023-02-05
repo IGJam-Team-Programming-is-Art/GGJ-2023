@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee59ca5bcb45754b8db85919908a56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotateTowardsPlayer: 1
   Slider: {fileID: 3668733343494055465}
   HitPointText: {fileID: 3668733343452828480}
   HitPointsReference: {fileID: 0}

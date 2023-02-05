@@ -15,3 +15,9 @@ public struct TreeReferences
     public GameObject GameObject;
     public Transform Transform;
 }
+
+public struct CameraReference
+{
+    public Camera Camera;
+    public Transform Transform;
+}

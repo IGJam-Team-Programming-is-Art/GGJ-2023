@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using VContainer;
 
 public class PlayerShooting : MonoBehaviour
 {
     private Rigidbody _rb;
     private WeaponUser _weaponUser;
-    [SerializeField] private GameOverHandler _gameOverHandler;
+    [SerializeField] [Inject] private GameOverHandler _gameOverHandler;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnGameOver()
     {
-        this.enabled = false;
+        enabled = false;
     }
 
     public void OnShootTargeted(InputAction.CallbackContext context)

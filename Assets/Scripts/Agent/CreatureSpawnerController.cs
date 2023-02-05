@@ -24,6 +24,7 @@ public class CreatureSpawnerController : MonoBehaviour
     [Inject] private CreatureDataCollection _createDataCollection;
     [Inject] private CreatureSpawnerCollection _creatureSpawnerCollection;
     [Inject] private PlayerReferences _playerReferences;
+    [Inject] private CameraReference _cameraReference;
     [Inject] private TargetAssignmentController _targetAssignmentController;
 
     private ObjectPool<CreatureSpawner> _spawnerPools;
@@ -62,6 +63,7 @@ public class CreatureSpawnerController : MonoBehaviour
 
                 creature.DeathEvent += OnCreatureDied;
                 creature.TargetAssignmentController = _targetAssignmentController;
+                creature.GetComponentInChildren<HitpointUi>().CameraReference = _cameraReference;
 
                 _creatureInstanceCounter += 1;
                 return creature;
