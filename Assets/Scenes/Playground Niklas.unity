@@ -841,6 +841,26 @@ PrefabInstance:
       propertyPath: HitpointsForGameover
       value: 
       objectReference: {fileID: 1746847974}
+    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
+        type: 3}
+      propertyPath: IngameUI
+      value: 
+      objectReference: {fileID: 67386261}
+    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
+        type: 3}
+      propertyPath: GameOverScreen
+      value: 
+      objectReference: {fileID: 142341202}
+    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
+        type: 3}
+      propertyPath: RestartHintScreen
+      value: 
+      objectReference: {fileID: 1671435073}
+    - target: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
+        type: 3}
+      propertyPath: HitpointsForGameover
+      value: 
+      objectReference: {fileID: 1746847974}
     - target: {fileID: 6306095043842280685, guid: 5d2b22e9711039f468f29fb2857cf7a0,
         type: 3}
       propertyPath: m_Name
@@ -919,6 +939,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 452490526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &452490530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2058158583110673864, guid: 5d2b22e9711039f468f29fb2857cf7a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 452490526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b18636b2cbcff4e88eed251e21928b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632245855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2406,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2000305848, guid: 5d2b22e9711039f468f29fb2857cf7a0, type: 3}
+      - m_Target: {fileID: 452490530}
         m_TargetAssemblyTypeName: GameOverHandler, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1

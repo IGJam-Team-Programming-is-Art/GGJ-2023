@@ -101,6 +101,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3870794883271477700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6785156117259284441}
+  m_Layer: 8
+  m_Name: WeaponSource
+  m_TagString: ProjectileSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6785156117259284441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870794883271477700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.61, z: 3.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5969032934861621096}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4950879507410629124
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +172,7 @@ Transform:
   - {fileID: 2103626229}
   - {fileID: 9090517044309201918}
   - {fileID: 6677722710318375619}
+  - {fileID: 6785156117259284441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -202,34 +234,10 @@ MonoBehaviour:
   CurrentWeapon: {fileID: 11400000, guid: d4d9a2742aade574a86c85c6e0e821ca, type: 2}
   OnPreswing:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8644000266776098172}
-        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
-        m_MethodName: DefaultPlay
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Attack
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8644000266776098172}
-        m_TargetAssemblyTypeName: CrossfadeAnimator, Assembly-CSharp
-        m_MethodName: DefaultPlay
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Walk
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &796478707999001897
 MonoBehaviour:
   m_ObjectHideFlags: 0
