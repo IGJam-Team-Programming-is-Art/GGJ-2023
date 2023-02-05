@@ -7,6 +7,8 @@ public class GameSceneScope : LifetimeScope
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _tree;
 
+    [SerializeField] private Camera _camera;
+
     [SerializeField] private CreatureDataCollection _creatureDataCollection;
     [SerializeField] private CreatureSpawnerCollection _creatureSpawnerCollection;
 
@@ -19,6 +21,9 @@ public class GameSceneScope : LifetimeScope
         if (_tree == null)
             _tree = GameObject.FindWithTag("Tree");
 
+        if (_camera == null)
+            _camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+
         builder.RegisterInstance<PlayerReferences>(new()
         {
             GameObject = _player,
@@ -28,6 +33,11 @@ public class GameSceneScope : LifetimeScope
         builder.RegisterInstance<TreeReferences>(new()
         {
             Transform = _tree.transform
+        });
+        builder.RegisterInstance<CameraReference>(new()
+        {
+            Camera = _camera,
+            Transform = _camera.transform
         });
 
         RegisterScriptableObjects(builder);

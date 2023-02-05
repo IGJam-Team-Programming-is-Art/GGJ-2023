@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer;
@@ -9,15 +7,13 @@ public class PlayerPlaceBuilding : MonoBehaviour
     [SerializeField] private GameObject BuildingPrefab;
     [SerializeField] private float Cooldown;
     [SerializeField] [Inject] private GameOverHandler _gameOverHandler;
+    [Inject] private CameraReference _cameraReference;
 
     private float _cooldownEndTimestamp;
 
     private void Awake()
     {
-        if (_gameOverHandler != null)
-        {
-            _gameOverHandler.OnGameOver += OnGameOver;
-        }
+        if (_gameOverHandler != null) _gameOverHandler.OnGameOver += OnGameOver;
     }
 
     public void OnBuildTargeted(InputAction.CallbackContext context)
@@ -38,6 +34,7 @@ public class PlayerPlaceBuilding : MonoBehaviour
         if (_cooldownEndTimestamp > Time.time) return;
         _cooldownEndTimestamp = Time.time + Cooldown;
 
-        Instantiate(BuildingPrefab, targetPoint, Quaternion.identity);
+        var building = Instantiate(BuildingPrefab, targetPoint, Quaternion.identity);
+        building.GetComponentInChildren<HitpointUi>().CameraReference = _cameraReference;
     }
 }
